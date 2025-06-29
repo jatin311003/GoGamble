@@ -134,11 +134,11 @@ const Gamble = () => {
         <div className="flex min-h-screen">
         {/* Ranking sidebar */}
         <div className=' bg-white p-4 shadow-lg w-1/4'>
-            <h2 className='text-4xl font-bold text-gray-800 mb-4 text-center'>LeaderBoard</h2>
+            <h2 className='text-4xl font-bold text-gray-800 mb-4 text-center'>LeaderBoard🥇</h2>
             <ul>
                 {rankings.map((user,index)=>(
                     <li key={user._id}
-                    className={`${userId===user._id?'border border-black bg-blue-500 text-white':'border-none '} flex justify-between p-2 ${index===0?'bg-green-500 font-bold ':'text-gray-700'}`}
+                    className={`${userId===user._id?'border border-black  bg-blue-500 text-white':'border-none '} flex justify-between mt-2 p-2 ${index===0?'bg-green-500 font-bold ':'text-gray-700'}`}
                     >
                         <span>{index+1}. {user.username}</span>
                         <span>${user.balance}</span>
