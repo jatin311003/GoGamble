@@ -14,7 +14,7 @@ const Login = () => {
 
         setError('');
         try{
-            const response=await fetch('http://localhost:7200/api/login',{
+            const response=await fetch('https://gogamble-server-c9mu.onrender.com/api/login',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json',

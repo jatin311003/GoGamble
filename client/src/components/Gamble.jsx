@@ -21,7 +21,7 @@ const Gamble = () => {
 
     const fetchUserBalance=async()=>{
         try{
-            const response=await fetch(`http://localhost:7200/api/user/${userId}`,{
+            const response=await fetch(`https://gogamble-server-c9mu.onrender.com/api/user/${userId}`,{
                 headers:{
                     method: 'POST',
                     'Authorization': `Bearer ${token}`,
@@ -43,7 +43,7 @@ const Gamble = () => {
 
     const fetchRankings=async()=>{
         try{
-            const response=await fetch('http://localhost:7200/api/rankings');
+            const response=await fetch('https://gogamble-server-c9mu.onrender.com/api/rankings');
             if(response.ok){
                 const data= await response.json();
                 setRankings(data);
@@ -86,7 +86,7 @@ const Gamble = () => {
             setBet('');
             setFlipping(false);
             try{
-                const response=await fetch('http://localhost:7200/api/update-balance',{
+                const response=await fetch('https://gogamble-server-c9mu.onrender.com/api/update-balance',{
                     method:'POST',
                     headers:{
                         'Content-Type':'application/json',
