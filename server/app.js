@@ -25,8 +25,7 @@ const cors=require('cors');
 JWT_SECRET="HELLO_WORLD"
 const connection=require('./connection');
 const User=require('./models/user');
-const app=express();
-const PORT = process.env.PORT || 7200;
+
 // aur tera naya code
 
 
