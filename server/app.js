@@ -1,3 +1,4 @@
+
 require('dotenv').config();  // ✅ sabse upar .env load karo
 
 const express = require('express');
@@ -14,6 +15,20 @@ const app = express();
 // ✅ ENV variables
 const PORT = process.env.PORT || 7200;
 const JWT_SECRET = process.env.JWT_SECRET;
+
+
+const express=require('express');
+const mongoose=require('mongoose');
+const bcrypt=require('bcrypt');
+const jwt=require('jsonwebtoken');
+const cors=require('cors');
+JWT_SECRET="HELLO_WORLD"
+const connection=require('./connection');
+const User=require('./models/user');
+const app=express();
+const PORT = process.env.PORT || 7200;
+// aur tera naya code
+
 
 app.use(express.json());
 app.use(cors({
