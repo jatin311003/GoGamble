@@ -12,14 +12,18 @@ const Gamble = () => {
     const [rankings,setRankings]=useState([]);
     const navigate=useNavigate();
     useEffect(() => {
-        setBalance(balance);
-        fetchRankings()
-    }, [initialbalance]);
+        if(userId && token) {
+            fetchUserBalance();
+            fetchRankings();
+        }
+    }, [userId, token]);
+    
 
     const fetchUserBalance=async()=>{
         try{
             const response=await fetch(`http://localhost:7200/api/user/${userId}`,{
                 headers:{
+                    method: 'POST',
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
@@ -35,6 +39,7 @@ const Gamble = () => {
             console.log('Error fetching user balance', error);
         }
     }
+    console.log("Fetch User Balance --> userId:", userId, "token:", token);
 
     const fetchRankings=async()=>{
         try{
@@ -78,6 +83,8 @@ const Gamble = () => {
                 setMessage('You lost the bet !');
             }
             setBalance(newBalance);
+            setBet('');
+            setFlipping(false);
             try{
                 const response=await fetch('http://localhost:7200/api/update-balance',{
                     method:'POST',
@@ -128,7 +135,7 @@ const Gamble = () => {
                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
                     >
                         Logout
-                    </button>
+                </button>
             </div>
         </div>
         <div className="flex min-h-screen">
