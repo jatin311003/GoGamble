@@ -1,5 +1,5 @@
 
-require('dotenv').config();  // ✅ sabse upar .env load karo
+require('dotenv').config(); 
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -8,22 +8,14 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 
 const connection = require('./connection');  // ye bas mongoose.connect kar raha h
-const User = require('./models/user');
 
 const app = express();
 
-// ✅ ENV variables
+
 const PORT = process.env.PORT || 7200;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
-const express=require('express');
-const mongoose=require('mongoose');
-const bcrypt=require('bcrypt');
-const jwt=require('jsonwebtoken');
-const cors=require('cors');
-JWT_SECRET="HELLO_WORLD"
-const connection=require('./connection');
 const User=require('./models/user');
 
 // aur tera naya code
@@ -31,12 +23,12 @@ const User=require('./models/user');
 
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5173',  // deployment me isko frontend url pe update kar dena
+    origin: 'http://localhost:5173', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 
-// ✅ Authentication Middleware
+
 const auth = (req, res, next) => {
     const token = req.header('Authorization');
     if (!token) return res.status(401).json('Access Denied');
@@ -49,7 +41,7 @@ const auth = (req, res, next) => {
     }
 };
 
-// ✅ Register Route
+//  Register Route
 app.post('/api/register', async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -73,7 +65,7 @@ app.post('/api/register', async (req, res) => {
     }
 });
 
-// ✅ Login Route
+//  Login Route
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -97,7 +89,7 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// ✅ Coin Flip Route
+//  Coin Flip Route
 app.post('/api/coinflip', auth, async (req, res) => {
     try {
         const { choice, betAmount } = req.body;
@@ -127,7 +119,7 @@ app.post('/api/coinflip', auth, async (req, res) => {
     }
 });
 
-// ✅ Rankings
+//  Rankings
 app.get('/api/rankings', async (req, res) => {
     try {
         const users = await User.find()
@@ -140,7 +132,7 @@ app.get('/api/rankings', async (req, res) => {
     }
 });
 
-// ✅ Update Balance
+//  Update Balance
 app.post('/api/update-balance', async (req, res) => {
     try {
         const { userId, newBalance } = req.body;
@@ -170,7 +162,7 @@ app.post('/api/user/:userId', async (req, res) => {
     }
 });
 
-// ✅ Start server
+//  Start server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
