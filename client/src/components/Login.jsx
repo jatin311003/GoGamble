@@ -36,10 +36,14 @@ const Login = () => {
                 navigate('/gamble',{
                     state:userData
                 });
+                console.log('Hitting URL:', 'https://gogamble-server-c9mu.onrender.com/api/login');
+
             }
+            
             else{
                 setError('Login Failed. Please try again.');
             }
+            console.log('Hitting URL:', 'https://gogamble-server-c9mu.onrender.com/api/login');
         }
         catch(error){
             setError('Login failed. Please try again.');

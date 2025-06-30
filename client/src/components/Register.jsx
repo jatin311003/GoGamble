@@ -18,7 +18,7 @@ const Register = () => {
 
         setError('');
         try{
-            const response=await fetch('https://gogamble-server-c9mu.onrender.com//api/register',{
+            const response=await fetch('https://gogamble-server-c9mu.onrender.com/api/register',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'
